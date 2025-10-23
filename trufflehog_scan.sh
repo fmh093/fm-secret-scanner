@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 set -euo pipefail
 sudo apt-get update -y
@@ -51,7 +52,7 @@ set -euo pipefail
 export PATH="$HOME/bin:$PATH"
 # Scan commit-range from baseline to HEAD in the local repos
 trufflehog git file://. \
---since-commit "$(BASE_COMMIT)" \
+--since-commit "$BASE_COMMIT" \
 --branch HEAD \
 --json > results.json || true
 
