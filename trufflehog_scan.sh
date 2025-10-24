@@ -101,7 +101,8 @@ filtered=$(jq -c \
 --arg h "$hash" \
 '{file: (.SourceMetadata.Data.Git.file // .SourceMetadata.Data.Filesystem.file),
   line: (.SourceMetadata.Data.Git.line // .SourceMetadata.Data.Filesystem.line),
-  detector: .DetectorType,
+  detector: .DetectorName,
+  gitcommit: .SourceMetadata.Data.Git.commit,
   verified: .Verified,
   hash: $h}' <<<"$json")
 
